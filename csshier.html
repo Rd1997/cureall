@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Billing Counter</title>
+  
+  
+      <link rel="stylesheet" href="cash.css">
+
+  
+</head>
+
+<body>
+
+  <div id="register">
+  <div id="ticket">
+    <h1><i>Cure All Billing</i></h1>
+    <table>
+      <tbody id="entries">
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>Total</th>
+          <th id="total">RS.0.00</th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <form id="entry">
+    <input id="newEntry" autofocus placeholder="Enter the Amount">
+  </form>
+</div>
+  
+  
+
+    <script >  var total = 0;
+
+document.getElementById('entry').onsubmit = enter;
+
+function enter() {
+  var entry = document.getElementById('newEntry').value;
+  var entry = parseFloat(entry);
+  currency = currencyFormat(entry);
+  document.getElementById('entries').innerHTML += '<tr><td></td><td>' + currency + '</td></tr>';
+  total += entry;
+  document.getElementById('total').innerHTML = currencyFormat(total);
+  
+  document.getElementById('newEntry').value = '';
+  return false;
+}
+
+function currencyFormat(number) {
+  var currency = parseFloat(number);
+  currency = currency.toFixed(2);
+  currency = 'Rs.' + currency;
+  return currency;
+}</script>
+
+
+
+
+</body>
+
+</html>
